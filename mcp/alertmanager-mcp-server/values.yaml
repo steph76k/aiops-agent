@@ -1,0 +1,21 @@
+ingress:
+  enabled: true
+  className: traefik
+  host: alertmanager-mcp-server.rke2-cluster1.berger.ph
+
+alertmanager:
+  url: "http://rancher-monitoring-alertmanager.cattle-monitoring-system.svc.cluster.local:9093"
+
+rbac:
+  extraRoleBindings: []
+  
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+server:
+  logLevel: "0"

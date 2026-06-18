@@ -1,0 +1,38 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+data/
+*.log
+
+.env
+
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Python
+.pytest_cache/
+.mypy_cache/
+
+# Mac/Linux
+*.swp
+
+# Coverage
+.coverage
+htmlcov/
+
+# Build
+dist/
+build/
+
+venv/
+.venv/
+**/venv/
+
+__pycache__/
+**/__pycache__/
+
+*.pyc

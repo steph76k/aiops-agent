@@ -1,0 +1,26 @@
+# values-production.yaml
+prometheus:
+  url: "http://rancher-monitoring-prometheus.cattle-monitoring-system.svc.cluster.local:9090"
+  disableLinks: "true"
+
+
+mcp:
+  transport: "http"
+  toolPrefix: "prod"
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  hosts:
+    - host: prometheus-mcp-server.rke2-cluster1.berger.ph
+      paths:
+        - path: /
+          pathType: Prefix
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi

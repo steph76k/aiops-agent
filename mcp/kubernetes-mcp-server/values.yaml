@@ -1,0 +1,11 @@
+ingress:
+  host: kubernetes-mcp-server.rke2-cluster1.berger.ph
+
+rbac:
+  create: true
+
+  extraClusterRoleBindings:
+    - name: use-view-role
+      roleRef:
+        name: view
+        external: true

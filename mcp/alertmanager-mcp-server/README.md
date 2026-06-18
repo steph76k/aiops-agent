@@ -1,0 +1,1 @@
+helm upgrade --install alertmanager-mcp-server   /home/tanzu/manifest/workspace/aiops/mcp-alertmanager/charts/mcp-alertmanager   -n alertmanager-mcp-server   -f values.yaml
