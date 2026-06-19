@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi import HTTPException
 from pydantic import BaseModel, Field
 from typing import List, Optional, Any
 import time
@@ -63,10 +64,19 @@ async def models():
 @app.post("/v1/chat/completions")
 async def chat(request: OpenAIChatCompletionRequest):
 
-    question = request.messages[-1].content
+    if not request.messages:
+        raise HTTPException(
+            status_code=400,
+            detail="messages must contain at least one message"
+        )
 
     response = await agent.ainvoke({
-        "messages": question
+        "messages": [
+            {
+                "role": "user",
+                "content": request.messages[-1].content
+            }
+        ]
     })
 
     answer = response["messages"][-1].content

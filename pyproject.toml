@@ -8,6 +8,8 @@ dependencies = [
     "langchain-openai",
     "langchain-mcp-adapters",
     "langchain-experimental",
+    "langgraph",
     "fastapi",
+    "typing-extensions",
     "uvicorn",
 ]

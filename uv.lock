@@ -98,6 +98,8 @@ dependencies = [
     { name = "langchain-experimental" },
     { name = "langchain-mcp-adapters" },
     { name = "langchain-openai" },
+    { name = "langgraph" },
+    { name = "typing-extensions" },
     { name = "uvicorn" },
 ]
 
@@ -108,6 +110,8 @@ requires-dist = [
     { name = "langchain-experimental" },
     { name = "langchain-mcp-adapters" },
     { name = "langchain-openai" },
+    { name = "langgraph" },
+    { name = "typing-extensions" },
     { name = "uvicorn" },
 ]
 
