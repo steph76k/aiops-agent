@@ -1,0 +1,9 @@
+Triage a Falco security event briefly.
+
+Output (very short):
+- Summary (1 line): observed action and affected scope.
+- Quick assessment (1 line): expected/suspicious/confirmed/unknown + confidence.
+- Key evidence (up to 4 bullets): timestamp, source, 1-line fact.
+- Immediate recommended next steps (up to 3 short actions).
+
+Avoid speculation about intent. Do not include sensitive file contents.

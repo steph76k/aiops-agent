@@ -4,8 +4,62 @@ ingress:
 rbac:
   create: true
 
+  extraClusterRoles:
+    - name: node-reader
+      rules:
+        - apiGroups: [""]
+          resources:
+            - nodes
+            - nodes/status
+            - nodes/proxy
+          verbs:
+            - get
+            - list
+            - watch
+
+        - apiGroups: ["metrics.k8s.io"]
+          resources:
+            - nodes
+          verbs:
+            - get
+            - list
+            - watch
+
+    - name: trivy-operator-report-reader
+      rules:
+        - apiGroups: ["aquasecurity.github.io"]
+          resources:
+            - vulnerabilityreports
+            - configauditreports
+            - exposedsecretreports
+            - rbacassessmentreports
+            - infraassessmentreports
+            - sbomreports
+            - clustervulnerabilityreports
+            - clustercompliancereports
+            - clusterrbacassessmentreports
+            - clusterinfraassessmentreports
+          verbs:
+            - get
+            - list
+            - watch
+
   extraClusterRoleBindings:
+    # Full cluster access; plan approval is enforced by the agent.
+    - name: use-cluster-admin-role
+      roleRef:
+        name: cluster-admin
+        external: true
+
     - name: use-view-role
       roleRef:
         name: view
         external: true
+
+    - name: node-reader
+      roleRef:
+        name: node-reader
+
+    - name: trivy-operator-report-reader
+      roleRef:
+        name: trivy-operator-report-reader

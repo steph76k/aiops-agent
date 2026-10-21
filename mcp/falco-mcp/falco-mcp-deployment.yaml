@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: falco-mcp
+  labels:
+    app: falco-mcp
+  namespace: falco
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: falco-mcp
+  template:
+    metadata:
+      labels:
+        app: falco-mcp
+    spec:
+      containers:
+        - name: falco-mcp
+          image: quay.io/maratsal/falco-mcp:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: FALCO_BASE_URL
+              value: "http://falco.rke2-cluster1.berger.ph"
+            - name: FALCO_USERNAME
+              value: "admin"
+            - name: FALCO_PASSWORD
+              value: "admin"
+            - name: PORT
+              value: "8080"
+            - name: MCP_HTTP_PATH
+              value: "/mcp"
+          ports:
+            - name: http
+              containerPort: 8080

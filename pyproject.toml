@@ -1,7 +1,7 @@
 [project]
 name = "aiops-agent"
 version = "0.1.0"
-requires-python = ">=3.10,<3.13"
+requires-python = ">=3.11,<3.13"
 
 dependencies = [
     "langchain",
@@ -9,7 +9,14 @@ dependencies = [
     "langchain-mcp-adapters",
     "langchain-experimental",
     "langgraph",
+    "langgraph-sdk",
+    "httpx",
     "fastapi",
     "typing-extensions",
     "uvicorn",
+    "langgraph-cli[inmem]>=0.4.30",
+    "langgraph-api>=0.11.0",
+    "markdown-it-py>=4.2.0",
+    "PyYAML>=6.0",
+    "jsonschema>=4.0",
 ]

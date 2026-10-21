@@ -23,6 +23,7 @@ data/
 # Coverage
 .coverage
 htmlcov/
+.langgraph_api/
 
 # Build
 dist/

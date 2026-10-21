@@ -1,0 +1,10 @@
+{
+    "dependencies": ["."],
+    "graphs": {
+      "aiops-agent": "./src/agent.py:build_agent"
+    },
+    "env": ".env",
+    "http": {
+      "app": "./src/api.py:app"
+    }
+  }

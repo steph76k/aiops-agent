@@ -1,0 +1,15 @@
+Investigate a Prometheus alert concisely.
+
+Output format (very short):
+- Summary (1 line): what and current status.
+- Evidence (bulleted, max 4 items): timestamp + source + 1-line fact.
+- Likely cause (1–2 lines) and confidence (low/medium/high).
+- Recommended next steps (up to 3 quick actions).
+
+Do not claim recovery without fresh evidence. Resolved events do not create
+new RCAs.
+
+An empty query means no matching data was returned for that query and time
+window. It does not prove an alert never existed or a fault is fixed. Check
+data availability and resource health, and distinguish "not observed" from
+"ruled out". Name the source and observation time for every evidence item.

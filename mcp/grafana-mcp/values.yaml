@@ -1,0 +1,41 @@
+# Grafana MCP for rke2-cluster1
+# The ingress must be reachable only from trusted networks, or protected
+# by an authentication middleware. The Grafana token authenticates the
+# server to Grafana; it does not authenticate clients to the MCP endpoint.
+replicas: 1
+
+grafana:
+  url: "http://rancher-monitoring-grafana.cattle-monitoring-system.svc.cluster.local:80"
+  apiKeySecret:
+    name: grafana-mcp-credentials
+    key: token
+  disableWrite: true
+
+extraArgs:
+  - "--transport=streamable-http"
+  - "--address=0.0.0.0:8000"
+  - "--enabled-tools=datasources,loki"
+  - "--allowed-hosts=grafana-mcp.rke2-cluster1.berger.ph,grafana-mcp.grafana-mcp.svc.cluster.local"
+
+service:
+  enabled: true
+  type: ClusterIP
+  port: 8000
+
+ingress:
+  enabled: true
+  className: traefik
+  hosts:
+    - host: grafana-mcp.rke2-cluster1.berger.ph
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi

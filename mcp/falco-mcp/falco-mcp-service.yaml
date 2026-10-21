@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: falco-mcp
+  labels:
+    app: falco-mcp
+  namespace: falco
+spec:
+  selector:
+    app: falco-mcp
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
